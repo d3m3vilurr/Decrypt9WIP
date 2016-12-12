@@ -5,3 +5,4 @@
 #include "decryptor/game.h"
 
 u32 DumpAk2iCart(u32 param);
+u32 InjectAk2iCart(u32 param);
