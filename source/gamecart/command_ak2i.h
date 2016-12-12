@@ -1,0 +1,25 @@
+// Copyright 2014 Normmatt
+// Licensed under GPLv2 or any later version
+// Refer to the license.txt file included.
+//
+// modifyed by osilloscopion (2 Jul 2016)
+//
+
+#pragma once
+
+#include "common.h"
+
+enum {
+    AK2I_MTN_NOR_OFFSET      = 0,
+};
+
+void ioAK2Delay(u32 us);
+
+u32 AK2I_CmdGetHardwareVersion(void);
+void AK2I_CmdReadRom(u32 address, u8 *buffer, u32 length);
+void AK2I_CmdReadFlash(u32 address, u8 *buffer, u32 length);
+void AK2I_CmdSetMapTableAddress(u32 tableName, u32 tableInRamAddress);
+void AK2I_CmdSetFlash1681_81(void);
+void AK2I_CmdUnlockFlash(void);
+void AK2I_CmdUnlockASIC(void);
+void AK2I_CmdActiveFatMap(void);

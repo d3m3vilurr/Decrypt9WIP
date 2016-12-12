@@ -7,6 +7,7 @@
 #include "i2c.h"
 #include "decryptor/keys.h"
 #include "decryptor/game.h"
+#include "decryptor/ak2i.h"
 #include "decryptor/nand.h"
 #include "decryptor/nandfat.h"
 #include "decryptor/titlekey.h"
@@ -84,14 +85,15 @@ MenuInfo menu[] =
         }
     },
     {
-        "Gamecart Dumper Options", 6,
+        "Gamecart Dumper Options", 7,
         {
             { "Dump Cart (full)",             &DumpGameCart,          0 },
             { "Dump Cart (trim)",             &DumpGameCart,          CD_TRIM },
             { "Dump & Decrypt Cart (full)",   &DumpGameCart,          CD_DECRYPT },
             { "Dump & Decrypt Cart (trim)",   &DumpGameCart,          CD_DECRYPT | CD_TRIM },
             { "Dump Cart to CIA",             &DumpGameCart,          CD_DECRYPT | CD_MAKECIA },
-            { "Dump Private Header",          &DumpPrivateHeader,     0 }
+            { "Dump Private Header",          &DumpPrivateHeader,     0 },
+            { "Dump AK2i",                    &DumpAk2iCart,          0 }
         }
     },
     {
