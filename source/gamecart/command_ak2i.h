@@ -13,8 +13,6 @@ enum {
     AK2I_MTN_NOR_OFFSET      = 0,
 };
 
-void ioAK2Delay(u32 us);
-
 u32 AK2I_CmdGetHardwareVersion(void);
 void AK2I_CmdReadRom(u32 address, u8 *buffer, u32 length);
 void AK2I_CmdReadFlash(u32 address, u8 *buffer, u32 length);
