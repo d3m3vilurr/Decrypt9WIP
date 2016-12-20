@@ -179,6 +179,7 @@ u32 InjectAk2iCart(u32 param)
     Debug("Writing...");
 
     for( u32 i = 0; i < writeLength; i += 512 ) {
+        ShowProgress(i, writeLength);
         if (hwVer == 0x81) {
             AK2I_CmdWriteFlash_81(writeBegin + i, buffer + i, 512);
         } else {
@@ -188,8 +189,8 @@ u32 InjectAk2iCart(u32 param)
         if (!AK2I_CmdVerifyFlash(buffer + i, writeBegin + i, 512)) {
             Debug("verify failed at %08X", i);
         }
-        Debug("%08X", i);
     }
+    ShowProgress(0, 0);
 
     Debug("Lock flash");
     AK2i_CmdLockFlash();
