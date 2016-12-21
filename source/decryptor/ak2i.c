@@ -165,6 +165,7 @@ u32 DumpAk2iCart(u32 param)
 
     Debug("Dump flash... (length 0x%08X)", length);
 
+    // TODO select filename
     DebugFileCreate("ak2i_flash.bin", true);
     u8 *tmp = mem;
     for( u32 i = 0, offset = 0, read = 0; i < length; i += 512 ) {
@@ -337,6 +338,7 @@ u32 InjectAk2iCart(u32 param)
 
     Debug("Load data");
 
+    // TODO select filename
     if (!DebugFileOpen("ak2i_patch.bin")) {
         return 1;
     }
@@ -483,6 +485,7 @@ u32 PatchAndInjectAk2iCart(u32 param)
 
     patchBootrom(buffer, info);
 
+    // TODO select filename
     DebugFileCreate("ak2i_patch.bin", true);
     DebugFileWrite(buffer, AK2I_PATCH_LENGTH, 0);
     FileClose();
