@@ -184,6 +184,8 @@ u32 DumpAk2iCart(u32 param)
             tmp = mem;
         }
     }
+    ShowProgress(0, 0);
+
     Debug("Done");
 
     return 0;
