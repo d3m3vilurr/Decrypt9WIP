@@ -59,6 +59,15 @@ unsigned short crc16tab[] =
     0x8201, 0x42C0, 0x4380, 0x8341, 0x4100, 0x81C1, 0x8081, 0x4040
 };
 
+struct ntrcardhax_info o_ak2i_ntrcardhax_infos[6] = {
+    { 17120, 0x80e18f4, 0x80e4c0c, 0x80ec190 },
+    { 18182, 0x80e18f4, 0x80e4c0c, 0x80ec190 },
+    { 19216, 0x80e18f4, 0x80e4c0c, 0x80ec190 },
+    { 20262, 0x80e18f4, 0x80e4c0c, 0x80ec190 },
+    { 21288, 0x80e1cb4, 0x80e4bcc, 0x80ec150 },
+    { 22313, 0x80e1cb4, 0x80e4bcc, 0x80ec150 },
+};
+
 struct ntrcardhax_info n_ak2i_ntrcardhax_infos[6] = {
     { 17120, 0x80e2b34, 0x80e5e4c, 0x80ed3d0 },
     { 18182, 0x80e1974, 0x80e4c8c, 0x80ec210 },
@@ -194,15 +203,12 @@ u32 DumpAk2iCart(u32 param)
 int8_t selectDeviceType() {
     DebugColor(COLOR_ASK, "Use arrow keys and <A> to choose device type");
 
-    //u8 is_new = 0;
-    u8 is_new = 1;
+    u8 is_new = 0;
     while (true) {
         DebugColor(COLOR_SELECT, "\r%s", is_new ? "NEW 3DS" : "OLD 3DS");
         u32 pad_state = InputWait();
         if (pad_state & (BUTTON_UP | BUTTON_DOWN)) {
-            // TODO
-            //is_new = (is_new + 1) & 1;
-            is_new = 1;
+            is_new = (is_new + 1) & 1;
         } else if (pad_state & BUTTON_A) {
             DebugColor(COLOR_ASK, "%s", is_new ? "NEW 3DS" : "OLD 3DS");
             return is_new;
@@ -474,13 +480,10 @@ u32 PatchAndInjectAk2iCart(u32 param)
     }
 
     struct ntrcardhax_info *info;
-    // TODO
-    if (device == 0) {
-        return 1;
-    }
     for (int i = 0; i < 6; i++) {
-        if (n_ak2i_ntrcardhax_infos[i].version == version) {
-            info = &n_ak2i_ntrcardhax_infos[i];
+        struct ntrcardhax_info *tmp = device ? &n_ak2i_ntrcardhax_infos[i] : &o_ak2i_ntrcardhax_infos[i];
+        if (tmp->version == version) {
+            info = tmp;
             break;
         }
     }
