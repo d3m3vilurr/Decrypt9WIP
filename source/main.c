@@ -15,7 +15,7 @@
 #include "decryptor/xorpad.h"
 #include "decryptor/transfer.h"
 
-#define SUBMENU_START 7
+#define SUBMENU_START 8
 
 MenuInfo menu[] =
 {
@@ -85,16 +85,23 @@ MenuInfo menu[] =
         }
     },
     {
-        "Gamecart Dumper Options", 8,
+        "Gamecart Dumper Options", 6,
         {
             { "Dump Cart (full)",             &DumpGameCart,          0 },
             { "Dump Cart (trim)",             &DumpGameCart,          CD_TRIM },
             { "Dump & Decrypt Cart (full)",   &DumpGameCart,          CD_DECRYPT },
             { "Dump & Decrypt Cart (trim)",   &DumpGameCart,          CD_DECRYPT | CD_TRIM },
             { "Dump Cart to CIA",             &DumpGameCart,          CD_DECRYPT | CD_MAKECIA },
-            { "Dump Private Header",          &DumpPrivateHeader,     0 },
+            { "Dump Private Header",          &DumpPrivateHeader,     0 }
+        }
+    },
+    {
+        "NDS Flashcart Options", 4,
+        {
+            { "Auto NTRCARDHAX to AK2i",      &AutoAk2iCart,          0 },
             { "Dump AK2i",                    &DumpAk2iCart,          0 },
-            { "Inject AK2i",                  &InjectAk2iCart,        0 }
+            { "Inject AK2i",                  &InjectAk2iCart,        0 },
+            { "Inject NTRCARDHAX to AK2i",    &PatchAndInjectAk2iCart,0 }
         }
     },
     {
