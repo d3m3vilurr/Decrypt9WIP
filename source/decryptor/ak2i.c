@@ -129,7 +129,7 @@ u32 DumpAk2iCart(u32 param)
         return 1;
     }
 
-    Debug("Cart: 0x%08X HW: 0x%08X", cartId, hwVer);
+    Debug("Cart: 0x%04X HW: %x", cartId, hwVer);
 
     u32 length = hwVer == 0x81 ? AK2I_81_BOOTROM_LENGTH : AK2I_44_BOOTROM_LENGTH;
 
@@ -330,7 +330,7 @@ u32 InjectAk2iCart(u32 param)
         return 1;
     }
 
-    Debug("Cart: 0x%08X HW: 0x%08X", cartId, hwVer);
+    Debug("Cart: 0x%04X HW: %x", cartId, hwVer);
 
     u8* buffer = BUFFER_ADDRESS + AK2I_PATCH_LENGTH;
     memset(buffer, 0x41, AK2I_PATCH_LENGTH);
