@@ -96,12 +96,13 @@ MenuInfo menu[] =
         }
     },
     {
-        "NDS Flashcart Options", 4,
+        "NDS Flashcart Options", 5,
         {
             { "Auto NTRCARDHAX to AK2i",      &AutoAk2iCart,          0 },
             { "Dump AK2i",                    &DumpAk2iCart,          0 },
             { "Inject AK2i",                  &InjectAk2iCart,        0 },
-            { "Inject NTRCARDHAX to AK2i",    &PatchAndInjectAk2iCart,0 }
+            { "Inject NTRCARDHAX to AK2i",    &PatchAndInjectAk2iCart,0 },
+            { "Restore AK2i bootrom",         &RestoreAk2iCart,       0 }
         }
     },
     {

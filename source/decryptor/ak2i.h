@@ -15,3 +15,4 @@ u32 DumpAk2iCart(u32 param);
 u32 InjectAk2iCart(u32 param);
 u32 PatchAndInjectAk2iCart(u32 param);
 u32 AutoAk2iCart(u32 param);
+u32 RestoreAk2iCart(u32 param);
